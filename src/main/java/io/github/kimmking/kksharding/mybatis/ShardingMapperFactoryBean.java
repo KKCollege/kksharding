@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * Description for this class.
+ * Factory Bean.
  *
  * @Author : kimmking(kimmking@apache.org)
  * @create 2024/1/15 00:28

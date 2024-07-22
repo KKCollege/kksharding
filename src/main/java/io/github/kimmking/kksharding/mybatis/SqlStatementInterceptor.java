@@ -11,11 +11,9 @@ import org.springframework.objenesis.instantiator.util.UnsafeUtils;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /**
- * Description for this class.
+ * Core interceptor.
  *
  * @Author : kimmking(kimmking@apache.org)
  * @create 2024/1/15 00:46

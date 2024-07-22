@@ -17,7 +17,7 @@ import io.github.kimmking.kksharding.strategy.ShardingStrategy;
 import java.util.*;
 
 /**
- * Description for this class.
+ * Core engine.
  *
  * @Author : kimmking(kimmking@apache.org)
  * @create 2024/1/14 22:08 */

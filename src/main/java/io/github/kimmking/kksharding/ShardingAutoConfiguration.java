@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Description for this class.
+ * Auto configuration.
  *
  * @Author : kimmking(kimmking@apache.org)
  * @create 2024/1/14 22:27

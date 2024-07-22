@@ -1,11 +1,10 @@
 package io.github.kimmking.kksharding.demo.mapper;
 
+import io.github.kimmking.kksharding.demo.model.User;
 import org.apache.ibatis.annotations.*;
 
-import java.util.Map;
-
 /**
- * Description for this class.
+ * user mapper.
  *
  * @Author : kimmking(kimmking@apache.org)
  * @create 2024/1/15 00:39
@@ -14,7 +13,10 @@ import java.util.Map;
 public interface UserMapper {
 
     @Select("select * from t_user where id = #{id}")
-    Map<String, String> findById(int id);
+    User findById(int id);
+
+    @Select("select * from t_user where id = #{id} and name = #{name}")
+    User findByIdAndName(int id, String name);
 
     @Insert("insert into t_user(id, name) values (#{id}, #{name})")
     int insert(int id, String name);

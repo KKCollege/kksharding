@@ -2,7 +2,7 @@ spring:
   sharding:
     datasources:
       ds0:
-        url: jdbc:mysql://localhost:3306/db?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
+        url: jdbc:mysql://localhost:3306/db0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
         username: root
         password:
       ds1:
@@ -11,7 +11,7 @@ spring:
         password:
     tables:
       t_user:
-        actualDataNodes: ds0.t_user0, ds0.t_user1, ds1.t_user0, ds1.t_user1
+        actualDataNodes: ds0.t_user0, ds0.t_user1, ds0.t_user2, ds1.t_user0, ds1.t_user1, ds1.t_user2
         databaseStrategy:
           type: hash
           shardingColumn: id
@@ -19,4 +19,4 @@ spring:
         tableStrategy:
           type: hash
           shardingColumn: id
-          algorithmExpression: t_user${id % 2}
+          algorithmExpression: t_user${id % 3}

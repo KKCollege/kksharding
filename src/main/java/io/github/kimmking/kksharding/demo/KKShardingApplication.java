@@ -2,6 +2,7 @@ package io.github.kimmking.kksharding.demo;
 
 import io.github.kimmking.kksharding.ShardingAutoConfiguration;
 import io.github.kimmking.kksharding.demo.mapper.UserMapper;
+import io.github.kimmking.kksharding.demo.model.User;
 import io.github.kimmking.kksharding.mybatis.ShardingMapperFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-
-import java.util.Map;
 
 @SpringBootApplication
 @Import({ShardingAutoConfiguration.class})
@@ -29,26 +28,45 @@ public class KKShardingApplication {
     @Bean
     ApplicationRunner runner() {
         return x -> {
-            System.out.println("Run kk sharding test for mybatis CRUD...");
+            System.out.println("=================================================");
+            System.out.println("===== Run kk sharding test for mybatis CRUD =====");
+            System.out.println("=================================================");
 
-            int delete = mapper.delete(1);
-            System.out.println("1. delete id = 1, result: " + delete);
+            for (int i = 1; i <= 10; i++) {
+                test(i, "KK0" + i);
+            }
 
-            int th = mapper.insert(1, "th");
-            System.out.println("2. insert id = 1, name=th, result: " + th);
-
-            Map<String, String> map = mapper.findById(1);
-            System.out.println("3. select/findById id=1, and name: "+map.get("name"));
-
-            int kk = mapper.update("kk", 1);
-            System.out.println("4. update id=1, name=kk, result: "+kk);
-
-            map = mapper.findById(1);
-            System.out.println("5. select/findById id=1, and name: "+map.get("name"));
-
-            System.out.println("Run all test completely.");
+            System.out.println("=================================================");
+            System.out.println("=====        Run all test completely.       =====");
+            System.out.println("=================================================");
 
         };
+    }
+
+    private void test(int id, String name) {
+        System.out.println(" [[[===>> Running kk sharding test for id/name=" + id + "/" + name + "]]]");
+        int no = 1;
+        int deleted = mapper.delete(id);
+        System.out.println(no++ + ". delete id = "+id+", result: " + deleted);
+
+        int kk = mapper.insert(id, name);
+        System.out.println(no++ + ". insert id = "+id+", name="+name+", result: " + kk);
+
+        User user = mapper.findById(id);
+        System.out.println(no++ + ". findById id="+id+", and name: "+user.getName());
+
+        user = mapper.findByIdAndName(id, name);
+        System.out.println(no++ + ". findByIdAndName id="+id+", and name: "+user.getName());
+
+        kk = mapper.update(name + "02", id);
+        System.out.println(no++ + ". update id="+id+", name="+name+"02, result: "+kk);
+
+        user = mapper.findById(id);
+        System.out.println(no++ + ". findById id="+id+", and name: "+user.getName());
+
+        int delete = mapper.delete(id);
+        System.out.println(no++ + ". delete id = "+id+", result: " + delete);
+        System.out.println(" [[[ ===>> Finish kk sharding test for id/name=" + id + "/" + name + "]]]");
     }
 
 

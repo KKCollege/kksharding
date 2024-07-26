@@ -2,11 +2,11 @@ spring:
   sharding:
     datasources:
       ds0:
-        url: jdbc:mysql://localhost:3306/db0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
+        url: jdbc:mysql://localhost:3306/test0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
         username: root
         password:
       ds1:
-        url: jdbc:mysql://localhost:3306/db1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
+        url: jdbc:mysql://localhost:3306/test1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8
         username: root
         password:
     tables:

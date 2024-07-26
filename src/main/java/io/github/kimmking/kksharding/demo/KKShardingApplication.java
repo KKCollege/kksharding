@@ -32,9 +32,17 @@ public class KKShardingApplication {
             System.out.println("===== Run kk sharding test for mybatis CRUD =====");
             System.out.println("=================================================");
 
-            for (int i = 1; i <= 10; i++) {
-                test(i, "KK0" + i);
-            }
+//            int kk = mapper.insert(new User(101, "KK101", 20));
+//            System.out.println(" =》 insert id=101, and result = "+ kk);
+
+//            User user = mapper.findById(101);
+//            System.out.println(" =》 findById id=101, and result = "+user);
+
+            test(1, "KK0" + 1);
+
+//            for (int i = 1; i <= 10; i++) {
+//                test(i, "KK0" + i);
+//            }
 
             System.out.println("=================================================");
             System.out.println("=====        Run all test completely.       =====");
@@ -44,12 +52,13 @@ public class KKShardingApplication {
     }
 
     private void test(int id, String name) {
+        System.out.println("\n\n");
         System.out.println(" [[[===>> Running kk sharding test for id/name=" + id + "/" + name + "]]]");
         int no = 1;
         int deleted = mapper.delete(id);
         System.out.println(no++ + ". delete id = "+id+", result: " + deleted);
 
-        int kk = mapper.insert(id, name);
+        int kk = mapper.insert(new User(id, name, 20));
         System.out.println(no++ + ". insert id = "+id+", name="+name+", result: " + kk);
 
         User user = mapper.findById(id);
@@ -58,7 +67,8 @@ public class KKShardingApplication {
         user = mapper.findByIdAndName(id, name);
         System.out.println(no++ + ". findByIdAndName id="+id+", and name: "+user.getName());
 
-        kk = mapper.update(name + "02", id);
+        user.setName(user.getName() + "02");
+        kk = mapper.update(user);
         System.out.println(no++ + ". update id="+id+", name="+name+"02, result: "+kk);
 
         user = mapper.findById(id);
@@ -67,6 +77,7 @@ public class KKShardingApplication {
         int delete = mapper.delete(id);
         System.out.println(no++ + ". delete id = "+id+", result: " + delete);
         System.out.println(" [[[ ===>> Finish kk sharding test for id/name=" + id + "/" + name + "]]]");
+        System.out.println("\n\n");
     }
 
 

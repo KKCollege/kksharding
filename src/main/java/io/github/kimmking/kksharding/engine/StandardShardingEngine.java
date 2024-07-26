@@ -13,6 +13,7 @@ import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlSchemaStatVisitor;
 import com.alibaba.druid.sql.visitor.SQLASTVisitor;
 import com.alibaba.druid.stat.TableStat;
 import io.github.kimmking.kksharding.strategy.ShardingStrategy;
+import io.github.kimmking.kksharding.strategy.ShardingStrategyFactory;
 
 import java.util.*;
 

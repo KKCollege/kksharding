@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.github.kimmking</groupId>
-    <artifactId>kksharding</artifactId>
+    <artifactId>ksharding</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>kksharding</name>
-    <description>kksharding</description>
+    <name>ksharding</name>
+    <description>ksharding</description>
 
 
     <properties>
